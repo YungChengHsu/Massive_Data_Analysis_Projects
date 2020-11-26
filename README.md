@@ -29,8 +29,15 @@ A brief introduction on [PageRank](https://www.youtube.com/watch?v=TSGQ4F1E6H8).
  1. **Shingling**
     1. Read in the articles and create shingles of 3 words (3-shingles).   For example, there will be 4 3-shingles from the sentence "I commit java code on github", and they are "I commit java", "commit java code", "java code on", "code on github".
  2. **Min-hashing**
+    1. Hash the shingles into tokens, so that the total space consumption for computation can be greatly reduced
+    2. Emulate the idea of permutation with the *Min-hashing* function to obtain a *Signature Matrix* (Min-hashing functions used for 100 times and its formula is shown in the iamge below)
+    ![min-hashing function formula](https://github.com/YungChengHsu/Massive_Data_Analysis_Projects/blob/main/Locality-Sensitive_Hashing/min-hashing_function_formula.png)
+    3. Leverage the notion that the *Jaccard Similarity* of 2 columns equals the *similarity of 2 Signatures* (And the longer the signatures, the smaller the expected error will be)
  3. **LSH**
- 
+    1. Divide all 100 rows (results of 100 Min-hashing functions) into 50 bands with 2 rows
+    2. In each band, hash identical Signatures into the same hash function entry
+    3. Calculate Jaccard Similarity of each pair of all Signatures hashed into the same hash function entry to get actual similarity
+    
  ### KMeans
  
  ### Frequent Itemsets
